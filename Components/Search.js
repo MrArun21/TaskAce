@@ -77,8 +77,9 @@ const styles = StyleSheet.create({
     color: '#635dbc',
     fontSize: 32,
   },
+
   searchBar: {
-    height: 40,
+    height: 50,
     width: '90%',
     alignSelf: 'center',
     borderRadius: 20,
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
   icon: {
     position: 'absolute',
     right: '8%',
-    top: 6,
+    top: 10,
     backgroundColor: '#ffffff',
   },
 });

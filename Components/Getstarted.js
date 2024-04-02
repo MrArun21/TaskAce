@@ -1,7 +1,15 @@
-import {TouchableOpacity, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import {
+  TouchableOpacity,
+  StyleSheet,
+  Text,
+  View,
+  Alert,
+  ToastAndroid,
+  BackHandler,
+} from 'react-native';
+import React, {useState} from 'react';
 import {SvgXml} from 'react-native-svg';
-
+import {useBackHandler} from '@react-native-community/hooks';
 const Getstarted = ({navigation}) => {
   const xml = `<svg width="390" height="408" viewBox="0 0 390 408" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <rect width="416" height="408" fill="url(#pattern0)"/>
@@ -13,6 +21,22 @@ const Getstarted = ({navigation}) => {
   </defs>
   </svg>
   `;
+  const [backPressCount, setBackPressCount] = useState(0);
+  const backActionHandler = () => {
+    if (navigation.isFocused()) {
+      // Check if the home screen is focused
+
+      BackHandler.exitApp();
+
+      return true;
+    } else {
+      // If it's not the home screen, don't handle the back press
+      return false;
+    }
+  };
+
+  // Attach back handler only for the home screen
+  useBackHandler(backActionHandler);
   return (
     <View style={styles.Container}>
       <View style={styles.upperContainer}>

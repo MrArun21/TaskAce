@@ -1,13 +1,13 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from './Home';
-import Activity from './Activitys';
+import Chats from './Chats';
 import Project from './Project';
 import Icon from 'react-native-vector-icons/Feather';
 import Icon1 from 'react-native-vector-icons/Octicons';
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import Notification from './Notification';
-import Search from '../Search';
+
 const Bottom = createBottomTabNavigator();
 const BotttomNavigation = () => {
   return (
@@ -56,14 +56,14 @@ const BotttomNavigation = () => {
         }}
       />
       <Bottom.Screen
-        name="activities "
-        component={Activity}
+        name="chats "
+        component={Chats}
         options={{
           headerShown: false,
           tabBarIcon: tabInfo => {
             return (
-              <Icon
-                name="bar-chart-2"
+              <Icon2
+                name="chatbubbles-outline"
                 size={30}
                 color={tabInfo.focused ? '#645EBC' : '#424242'}
               />

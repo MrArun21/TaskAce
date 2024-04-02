@@ -5,6 +5,9 @@ import {
   Image,
   TouchableOpacity,
   FlatList,
+  Alert,
+  ToastAndroid,
+  BackHandler,
 } from 'react-native';
 import React, {useState} from 'react';
 import TaskCardCustom from '../../Components/TaskCardCustom';
@@ -12,8 +15,11 @@ import Icon2 from 'react-native-vector-icons/FontAwesome';
 import Data from '../../DemoData';
 import * as Progress from 'react-native-progress';
 import Icon1 from 'react-native-vector-icons/FontAwesome6';
+import {useBackHandler} from '@react-native-community/hooks';
 
 const Home = ({navigation}) => {
+  const [backPressCount, setBackPressCount] = useState(0);
+
   const [clicked, setclicked] = useState(0);
   const [Filter, setFilter] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
@@ -114,7 +120,36 @@ const Home = ({navigation}) => {
       </View>
     </TouchableOpacity>
   );
+  const backActionHandler = () => {
+    if (navigation.isFocused()) {
+      // Check if the home screen is focused
+      if (backPressCount < 1) {
+        ToastAndroid.show('Press back again to exit', ToastAndroid.SHORT);
+        setBackPressCount(backPressCount + 1);
+        setTimeout(() => {
+          setBackPressCount(0);
+        }, 2000); // Reset back press count after 2 seconds
+      } else {
+        Alert.alert('', 'Are you sure you want to exit?', [
+          {
+            text: 'No',
+            onPress: () => null,
+          },
+          {
+            text: 'Yes',
+            onPress: () => BackHandler.exitApp(),
+          },
+        ]);
+      }
+      return true;
+    } else {
+      // If it's not the home screen, don't handle the back press
+      return false;
+    }
+  };
 
+  // Attach back handler only for the home screen
+  useBackHandler(backActionHandler);
   return (
     <View style={{backgroundColor: '#ffffff'}}>
       <View style={styles.Container}>
@@ -123,10 +158,14 @@ const Home = ({navigation}) => {
           <Text style={styles.Title}>fullStack Engineer</Text>
         </View>
         <View style={styles.profileBox}>
-          <Image
-            source={require('../../assets/man.jpg')}
-            style={styles.profile}
-          />
+          <TouchableOpacity
+            activeOpacity={0.9}
+            onPress={() => navigation.navigate('Cradentials')}>
+            <Image
+              source={require('../../assets/man.jpg')}
+              style={styles.profile}
+            />
+          </TouchableOpacity>
         </View>
       </View>
       <View style={styles.deshTitleBox}>
