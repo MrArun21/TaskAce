@@ -23,7 +23,7 @@ const Home = ({navigation}) => {
   const [clicked, setclicked] = useState(0);
   const [Filter, setFilter] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedItem, setSelectedItem] = useState('');
 
   const newData = Data.filter(item => {
     if (Filter === '') {
@@ -35,6 +35,11 @@ const Home = ({navigation}) => {
   const handleClick = (num, status) => {
     setclicked(num);
     setFilter(status);
+  };
+
+  // Function to update selectedItem
+  const updateSelectedItem = updatedItem => {
+    setSelectedItem(updatedItem);
   };
 
   const renderItem = ({item}) => (
@@ -227,6 +232,7 @@ const Home = ({navigation}) => {
             visible={modalVisible}
             closeModal={() => setModalVisible(false)}
             item={selectedItem}
+            updateItem={updateSelectedItem}
           />
         </View>
       </View>

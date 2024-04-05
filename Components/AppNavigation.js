@@ -7,6 +7,7 @@ import Login from './Login';
 import Cradentials from './Cradentials';
 import Dashboard from './Dashboard';
 import Search from './Search';
+import ClientHome from '../Client/ClientHome';
 const AppNavigation = () => {
   const Stack = createNativeStackNavigator();
   return (
@@ -40,6 +41,12 @@ const AppNavigation = () => {
         <Stack.Screen
           name="Search"
           component={Search}
+          options={{headerShown: false}}
+        />
+        {/* Client Screens */}
+        <Stack.Screen
+          name="clientHome"
+          component={ClientHome}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

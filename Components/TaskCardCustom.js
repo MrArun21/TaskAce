@@ -1,13 +1,75 @@
-import React from 'react';
-import {Modal, View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {
+  Modal,
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  FlatList,
+} from 'react-native';
 import Icon1 from 'react-native-vector-icons/FontAwesome6';
+import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
 import * as Progress from 'react-native-progress';
-const TaskCardCustom = ({visible, closeModal, item}) => {
-  // Add a null check for item
-  // Satyam null check hai tere liya
+const TaskCardCustom = ({visible, closeModal, item, updateItem}) => {
   if (!item) {
     return null;
   }
+
+  const [tasks, setTasks] = useState(item.task);
+  const [selectedTasks, setSelectedTasks] = useState([]);
+
+  useEffect(() => {
+    setTasks(item.task);
+  }, [item.task]);
+
+  const toggleTask = id => {
+    const updatedTasks = tasks.map(task =>
+      task.id === id ? {...task, checked: !task.checked} : task,
+    );
+    setTasks(updatedTasks);
+
+    // Update the item.task in the parent component
+    const updatedItem = {...item, task: updatedTasks};
+    updateItem(updatedItem);
+  };
+
+  const submitTasks = () => {
+    const selected = tasks.filter(task => task.checked);
+    setSelectedTasks(selected);
+    if (selected.length === 0) {
+      console.log('No Task Completed');
+      console.log(
+        'Selected Tasks:',
+        selected,
+        'Task Name :',
+        item.name,
+        '| ID: ',
+
+        item.id,
+      );
+    } else if (selected.length === item.task.length) {
+      console.log('All Task Completed');
+      console.log(
+        'Selected Tasks:',
+        selected,
+        'Task Name :',
+        item.name,
+        '| ID: ',
+
+        item.id,
+      );
+    } else {
+      console.log(
+        'Selected Tasks:',
+        selected,
+        'Task Name :',
+        item.name,
+        '| ID: ',
+
+        item.id,
+      );
+    }
+  };
 
   return (
     <Modal
@@ -84,11 +146,56 @@ const TaskCardCustom = ({visible, closeModal, item}) => {
             />
             <Text style={styles.progressCount}>{item.progress * 10}%</Text>
           </View>
-          <TouchableOpacity
-            style={styles.btn}
-            onPress={closeModal}
-            activeOpacity={0.8}>
-            <Text style={styles.showLess}>Show Less</Text>
+          <View style={styles.todoList}>
+            <FlatList
+              data={tasks}
+              keyExtractor={item => item.id.toString()}
+              renderItem={({item}) => (
+                <View style={{marginBottom: 10}}>
+                  <TouchableOpacity
+                    activeOpacity={0.9}
+                    style={styles.todoBox}
+                    onPress={() => toggleTask(item.id)}>
+                    <Icon2
+                      name={
+                        item.checked
+                          ? 'checkbox-marked-outline'
+                          : 'checkbox-blank-outline'
+                      }
+                      size={20}
+                      color="#424242"
+                    />
+                    <Text style={styles.todoTxt}>{item.task}</Text>
+                  </TouchableOpacity>
+                </View>
+              )}
+            />
+          </View>
+          <View style={styles.btnBox}>
+            <TouchableOpacity
+              style={styles.btn}
+              activeOpacity={0.8}
+              onPress={() => {
+                console.log(item.link);
+              }}>
+              <Icon1 name="github" size={15} color="#fff" />
+              <Text style={styles.submit}>GitHub</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.btn}
+              onPress={submitTasks}
+              activeOpacity={0.8}>
+              <Text style={styles.submit}>Submit</Text>
+            </TouchableOpacity>
+          </View>
+          <TouchableOpacity activeOpacity={0.9} onPress={closeModal}>
+            <Text
+              style={[
+                styles.submit,
+                {color: '#645dbd', alignSelf: 'center', paddingTop: 8},
+              ]}>
+              Show Less
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -104,7 +211,7 @@ const styles = StyleSheet.create({
     borderTopEndRadius: 20,
     padding: 20,
     width: '100%',
-    height: '57.7%',
+    height: '58%',
     position: 'absolute',
     bottom: 65,
   },
@@ -241,17 +348,40 @@ const styles = StyleSheet.create({
   btn: {
     backgroundColor: '#645EBC',
     height: 40,
-    width: '95%',
+    width: '48%',
     alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: 'row',
+    gap: 10,
     borderRadius: 8,
-    position: 'absolute',
-    bottom: 10,
   },
-  showLess: {
+  submit: {
     color: '#ffffff',
     fontFamily: 'Poppins-Medium',
     textTransform: 'capitalize',
+  },
+  btnBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 10,
+    alignSelf: 'center',
+  },
+  todoList: {
+    height: '40%',
+    paddingTop: 10,
+    paddingBottom: 10,
+  },
+  todoTxt: {
+    color: '#424242',
+    textTransform: 'capitalize',
+    fontFamily: 'Poppins-Regular',
+  },
+  todoBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+    width: '92%',
   },
 });

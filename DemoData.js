@@ -9,6 +9,16 @@ const Data = [
     submitDate: '18/Apr/2024',
     time: '4d',
     progress: 4,
+    link: 'GitHub1',
+    task: [
+      {
+        id: 1,
+        task: 'Task 1',
+        checked: false,
+      },
+      {id: 2, task: 'Task 2', checked: false},
+      {id: 3, task: 'Task 3', checked: false},
+    ],
   },
   {
     id: 2,
@@ -20,6 +30,12 @@ const Data = [
     submitDate: '02/May/2024',
     time: '1w',
     progress: 8.5,
+    link: 'GitHub2',
+    task: [
+      {id: 1, task: 'Task 4', checked: false},
+      {id: 2, task: 'Task 2', checked: false},
+      {id: 3, task: 'Task 3', checked: false},
+    ],
   },
   {
     id: 3,
@@ -31,6 +47,12 @@ const Data = [
     submitDate: '14/May/2024',
     time: '2d',
     progress: 0,
+    link: 'GitHub3',
+    task: [
+      {id: 1, task: 'Task 1', checked: false},
+      {id: 2, task: 'Task 2', checked: false},
+      {id: 3, task: 'Task 3', checked: false},
+    ],
   },
   {
     id: 4,
@@ -42,6 +64,12 @@ const Data = [
     submitDate: '30/May/2024',
     time: '3d',
     progress: 1,
+    link: 'GitHub4',
+    task: [
+      {id: 1, task: 'Task 1', checked: false},
+      {id: 2, task: 'Task 2', checked: false},
+      {id: 3, task: 'Task 3', checked: false},
+    ],
   },
   {
     id: 5,
@@ -53,6 +81,12 @@ const Data = [
     submitDate: '10/Jun/2024',
     time: '1w',
     progress: 8,
+    link: 'GitHub5',
+    task: [
+      {id: 1, task: 'Task 1', checked: false},
+      {id: 2, task: 'Task 2', checked: false},
+      {id: 3, task: 'Task 3', checked: false},
+    ],
   },
   {
     id: 6,
@@ -64,6 +98,12 @@ const Data = [
     submitDate: '25/Jun/2024',
     time: '4d',
     progress: 7,
+    link: 'GitHub6',
+    task: [
+      {id: 1, task: 'Task 1', checked: false},
+      {id: 2, task: 'Task 2', checked: false},
+      {id: 3, task: 'Task 3', checked: false},
+    ],
   },
   {
     id: 7,
@@ -75,6 +115,12 @@ const Data = [
     submitDate: '08/Jul/2024',
     time: '2d',
     progress: 10,
+    link: 'GitHub7',
+    task: [
+      {id: 1, task: 'Task 1', checked: false},
+      {id: 2, task: 'Task 2', checked: false},
+      {id: 3, task: 'Task 3', checked: false},
+    ],
   },
   {
     id: 8,
@@ -86,6 +132,12 @@ const Data = [
     submitDate: '20/Jul/2024',
     time: '1w',
     progress: 8,
+    link: 'GitHub8',
+    task: [
+      {id: 1, task: 'Task 1', checked: false},
+      {id: 2, task: 'Task 2', checked: false},
+      {id: 3, task: 'Task 3', checked: false},
+    ],
   },
   {
     id: 9,
@@ -97,6 +149,12 @@ const Data = [
     submitDate: '05/Aug/2024',
     time: '3d',
     progress: 0,
+    link: 'GitHub9',
+    task: [
+      {id: 1, task: 'Task 1', checked: false},
+      {id: 2, task: 'Task 2', checked: false},
+      {id: 3, task: 'Task 3', checked: false},
+    ],
   },
   {
     id: 10,
@@ -108,6 +166,12 @@ const Data = [
     submitDate: '18/Aug/2024',
     time: '1w',
     progress: 7.2,
+    link: 'GitHub10',
+    task: [
+      {id: 1, task: 'Task 1', checked: false},
+      {id: 2, task: 'Task 2', checked: false},
+      {id: 3, task: 'Task 3', checked: false},
+    ],
   },
 ];
 
