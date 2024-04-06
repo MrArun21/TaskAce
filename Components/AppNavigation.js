@@ -7,7 +7,9 @@ import Login from './Login';
 import Cradentials from './Cradentials';
 import Dashboard from './Dashboard';
 import Search from './Search';
-import ClientHome from '../Client/ClientHome';
+import ClientHome from '../Admin/AdminBottomNav.js/AdminHome';
+import Admin from '../Admin/AdminDrawer/Admin';
+import AdminDashboard from '../Admin/AdminDashboard';
 const AppNavigation = () => {
   const Stack = createNativeStackNavigator();
   return (
@@ -43,10 +45,10 @@ const AppNavigation = () => {
           component={Search}
           options={{headerShown: false}}
         />
-        {/* Client Screens */}
+        {/* Admin screen */}
         <Stack.Screen
-          name="clientHome"
-          component={ClientHome}
+          name="AdminDashboard"
+          component={AdminDashboard}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
