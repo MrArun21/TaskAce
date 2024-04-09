@@ -54,7 +54,7 @@ const Getstarted = ({navigation}) => {
           activeOpacity={0.9}
           style={styles.btn}
           onPress={() => {
-            navigation.navigate('AdminDashboard');
+            navigation.navigate('Login');
           }}>
           <Text style={styles.btntext}>Get started</Text>
         </TouchableOpacity>

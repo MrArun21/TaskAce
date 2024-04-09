@@ -49,7 +49,9 @@ const CustomCard = ({item}) => {
         </View>
       </View>
       <View style={styles.approveBtn}>
-        <Text>Approve</Text>
+        <Text style={{fontFamily: 'Poppins-Medium', color: '#fff'}}>
+          Approve
+        </Text>
       </View>
     </TouchableOpacity>
   );
@@ -59,11 +61,11 @@ export default CustomCard;
 
 const styles = StyleSheet.create({
   cardBody: {
-    margin: 10,
+    margin: 5,
     backgroundColor: '#c5c1ff',
     alignSelf: 'center',
     borderRadius: 10,
-    gap: 6,
+    gap: 4,
   },
 
   taskBubble: {
@@ -132,7 +134,7 @@ const styles = StyleSheet.create({
     color: '#424242',
     fontFamily: 'Poppins-Medium',
     textTransform: 'capitalize',
-    fontSize: 8,
+    fontSize: 9,
   },
   approveBtn: {
     backgroundColor: '#645dbd',

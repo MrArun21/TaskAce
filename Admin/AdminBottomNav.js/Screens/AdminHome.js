@@ -14,8 +14,10 @@ import {useBackHandler} from '@react-native-community/hooks';
 import {useNavigation, DrawerActions} from '@react-navigation/native';
 import Icon1 from 'react-native-vector-icons/FontAwesome6';
 import Icon2 from 'react-native-vector-icons/FontAwesome';
-import CustomCard from './CustomCard';
+import CustomCard from './Cards/CustomCard';
 import Data from '../../../DemoData';
+import Card2 from './Cards/Card2';
+import Data2 from '../../../Data2';
 
 const AdminHome = () => {
   // Date,Time
@@ -84,7 +86,7 @@ const AdminHome = () => {
     <View style={styles.Wrapper}>
       <View style={styles.Container}>
         <View style={styles.TitleBox}>
-          <Text style={styles.title}>delta software lTD </Text>
+          <Text style={styles.title}>delta software lTD</Text>
           <Text style={styles.description}>
             software development & IT Consultant company since 2001
           </Text>
@@ -156,6 +158,16 @@ const AdminHome = () => {
             refreshing={true}
           />
         </View>
+        <Text style={styles.title1}>meeting’s </Text>
+        <View style={[styles.Card, {paddingBottom: 120}]}>
+          <FlatList
+            data={Data2}
+            keyExtractor={item => item.id.toString()}
+            renderItem={Card2}
+            showsVerticalScrollIndicator={false}
+            refreshing={true}
+          />
+        </View>
       </View>
     </View>
   );
@@ -187,12 +199,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   TitleBox: {
-    width: '80%',
+    width: '70%',
   },
   title: {
     fontFamily: 'Poppins-Bold',
     color: '#645ebc',
-    fontSize: 24,
+    fontSize: 26,
 
     textTransform: 'capitalize',
   },
@@ -297,11 +309,11 @@ const styles = StyleSheet.create({
     color: '#424242',
     fontFamily: 'Poppins-Medium',
     textTransform: 'capitalize',
-    textDecorationLine: 'underline',
+    borderBottomWidth: 1,
+    borderColor: '#424242',
     alignSelf: 'flex-start',
   },
   Card: {
     width: '100%',
-    marginTop: 20,
   },
 });
