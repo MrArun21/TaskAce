@@ -3,8 +3,6 @@ import {
   StyleSheet,
   Text,
   View,
-  Alert,
-  ToastAndroid,
   BackHandler,
 } from 'react-native';
 import React, {useState} from 'react';
@@ -56,7 +54,7 @@ const Getstarted = ({navigation}) => {
           activeOpacity={0.9}
           style={styles.btn}
           onPress={() => {
-            navigation.navigate('Login');
+            navigation.navigate('AdminDashboard');
           }}>
           <Text style={styles.btntext}>Get started</Text>
         </TouchableOpacity>

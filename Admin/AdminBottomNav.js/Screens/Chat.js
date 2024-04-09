@@ -7,9 +7,10 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React, {useState} from 'react';
-import NavBar from './NavBar';
+
 import Icon2 from 'react-native-vector-icons/FontAwesome';
-const Chats = ({navigation}) => {
+import NavBar from './NavBar';
+const Chat = ({navigation}) => {
   // Get current date
   const currentDate = new Date();
   // Get the date to display
@@ -90,7 +91,7 @@ const Chats = ({navigation}) => {
   );
 };
 
-export default Chats;
+export default Chat;
 const styles = StyleSheet.create({
   wrapper: {
     backgroundColor: '#645EBC',

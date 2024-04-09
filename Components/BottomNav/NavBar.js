@@ -10,18 +10,18 @@ const NavBar = props => {
   return (
     <View style={styles.Container}>
       <View style={styles.Right}>
-        <Text style={styles.title}>{props.title}</Text>
+        <Text style={[styles.title, {color: props.color}]}>{props.title}</Text>
         <View style={styles.Icon}>
           <Icon2
             name="search"
             size={25}
-            color="#645EBC"
+            color={props.color}
             onPress={() => navigation.navigate('Search')}
           />
           <Icon
             name="bars-staggered"
             size={25}
-            color="#645EBC"
+            color={props.color}
             onPress={() => navigation.dispatch(DrawerActions.toggleDrawer)}
           />
         </View>
@@ -35,9 +35,8 @@ export default NavBar;
 const styles = StyleSheet.create({
   Container: {
     width: '100%',
-    height: '16%',
+    height: '14%',
     alignItems: 'flex-start',
-    backgroundColor: '#ffffff',
   },
   Right: {
     alignItems: 'center',
@@ -50,7 +49,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontFamily: 'Poppins-Bold',
-    color: '#645EBC',
+
     fontSize: 42,
     textTransform: 'capitalize',
   },
@@ -58,11 +57,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 18,
-  },
-  discription: {
-    fontFamily: 'Poppins-Medium',
-    color: '#645EBC',
-    fontSize: 14,
-    marginLeft: 20,
   },
 });

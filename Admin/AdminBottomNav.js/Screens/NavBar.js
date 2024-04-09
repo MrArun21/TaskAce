@@ -4,24 +4,24 @@ import Icon from 'react-native-vector-icons/FontAwesome6';
 import Icon2 from 'react-native-vector-icons/FontAwesome';
 import {useNavigation, DrawerActions} from '@react-navigation/native';
 
-const NavBar2 = props => {
+const NavBar = props => {
   const navigation = useNavigation();
 
   return (
     <View style={styles.Container}>
       <View style={styles.Right}>
-        <Text style={styles.title}>{props.title}</Text>
+        <Text style={[styles.title, {color: props.color}]}>{props.title}</Text>
         <View style={styles.Icon}>
           <Icon2
             name="search"
             size={25}
-            color="#fff"
+            color={props.color}
             onPress={() => navigation.navigate('Search')}
           />
           <Icon
             name="bars-staggered"
             size={25}
-            color="#fff"
+            color={props.color}
             onPress={() => navigation.dispatch(DrawerActions.toggleDrawer)}
           />
         </View>
@@ -30,7 +30,7 @@ const NavBar2 = props => {
   );
 };
 
-export default NavBar2;
+export default NavBar;
 
 const styles = StyleSheet.create({
   Container: {
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontFamily: 'Poppins-Bold',
-    color: '#fff',
+
     fontSize: 42,
     textTransform: 'capitalize',
   },
@@ -57,11 +57,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 18,
-  },
-  discription: {
-    fontFamily: 'Poppins-Medium',
-    color: '#fff',
-    fontSize: 14,
-    marginLeft: 20,
   },
 });

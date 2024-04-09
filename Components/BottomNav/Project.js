@@ -31,7 +31,7 @@ const Project = () => {
   const [selected, setSelected] = useState('');
   return (
     <View style={styles.wrapper}>
-      <NavBar title={'Project'} />
+      <NavBar title={'Project'} color={'#645EBC'} />
       <View style={styles.Container}>
         <Text style={styles.title}>alloted Project</Text>
         <View>

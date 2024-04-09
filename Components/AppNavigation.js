@@ -6,9 +6,7 @@ import SpleshScreen from './SpleshScreen';
 import Login from './Login';
 import Cradentials from './Cradentials';
 import Dashboard from './Dashboard';
-import Search from './Search';
-import ClientHome from '../Admin/AdminBottomNav.js/AdminHome';
-import Admin from '../Admin/AdminDrawer/Admin';
+
 import AdminDashboard from '../Admin/AdminDashboard';
 const AppNavigation = () => {
   const Stack = createNativeStackNavigator();
@@ -40,11 +38,7 @@ const AppNavigation = () => {
           component={Dashboard}
           options={{headerShown: false}}
         />
-        <Stack.Screen
-          name="Search"
-          component={Search}
-          options={{headerShown: false}}
-        />
+
         {/* Admin screen */}
         <Stack.Screen
           name="AdminDashboard"

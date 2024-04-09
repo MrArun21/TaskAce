@@ -4,7 +4,7 @@ import NavBar from './NavBar';
 const Notification = () => {
   return (
     <View View style={styles.wrapper}>
-      <NavBar title={'notification'} />
+      <NavBar title={'notification'} color={'#645EBC'} />
       <TouchableOpacity activeOpacity={0.9}>
         <View style={styles.notificationBox}>
           <View style={styles.notificationTitle}>

@@ -42,14 +42,22 @@ const AdminDrawerContent = ({navigation}) => {
       <View style={styles.lowerBox}>
         <View style={styles.MenuList}>
           <Text style={styles.Menutxt}>Profile</Text>
-          <Text style={styles.Menutxt}>Team</Text>
+          <Text style={styles.Menutxt}>Add Users</Text>
+          <Text style={styles.Menutxt}>Employee</Text>
           <Text style={styles.Menutxt}>Work History</Text>
           <Text style={styles.Menutxt}>Settings</Text>
-          <Text style={styles.Menutxt}>About</Text>
+          <Text style={styles.Menutxt} onPress={logOut}>
+            Logout
+          </Text>
         </View>
 
-        <TouchableOpacity style={styles.LogoutBtn} onPress={logOut}>
-          <Text style={styles.logouttxt}>Log Out</Text>
+        <TouchableOpacity
+          style={styles.LogoutBtn}
+          activeOpacity={0.9}
+          onPress={() => {
+            navigation.navigate('Plans');
+          }}>
+          <Text style={styles.logouttxt}>Upgrade Plan</Text>
         </TouchableOpacity>
       </View>
     </View>
