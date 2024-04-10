@@ -74,7 +74,7 @@ const AdminBottomNav = () => {
                 name="add-circle"
                 size={55}
                 color={'#645EBC'}
-                height={50}
+                height={52}
                 width={55}
               />
             );

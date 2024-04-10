@@ -9,7 +9,7 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {useBackHandler} from '@react-native-community/hooks';
 import {useNavigation, DrawerActions} from '@react-navigation/native';
 import Icon1 from 'react-native-vector-icons/FontAwesome6';
@@ -20,16 +20,37 @@ import Card2 from './Cards/Card2';
 import Data2 from '../../../Data2';
 
 const AdminHome = () => {
-  // Date,Time
-  const [currentDateTime, setCurrentDateTime] = useState(new Date());
+  const flatListRef = useRef(null);
+  const [scrollIndex, setScrollIndex] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentDateTime(new Date());
-    }, 1000); // Update every second
+    let intervalId;
 
-    return () => clearInterval(interval); // Clean up interval
-  }, []);
+    const startScrolling = () => {
+      intervalId = setInterval(() => {
+        if (flatListRef.current) {
+          const filteredData = Data2.filter(
+            item => item.date === formattedDate,
+          );
+          if (filteredData.length > 0) {
+            const newIndex = (scrollIndex + 1) % filteredData.length;
+            setScrollIndex(newIndex);
+            flatListRef.current.scrollToIndex({
+              animated: true,
+              index: newIndex,
+            });
+          }
+        }
+      }, 3000); // Adjust the interval duration (in milliseconds) as needed
+    };
+
+    startScrolling();
+
+    return () => clearInterval(intervalId);
+  }, [formattedDate, scrollIndex]);
+
+  // Date,Time
+  const currentDateTime = new Date();
   const dayNames = [
     'Sunday',
     'Monday',
@@ -40,6 +61,10 @@ const AdminHome = () => {
     'Saturday',
   ];
   // Extracting individual parts
+  const formattedDate =
+    `${currentDateTime.getFullYear()}-` +
+    `${(currentDateTime.getMonth() + 1).toString().padStart(2, '0')}-` +
+    `${currentDateTime.getDate().toString().padStart(2, '0')}`;
   const dateInNumber = currentDateTime.getDate();
   const dayByName = dayNames[currentDateTime.getDay()];
   const monthByName = currentDateTime.toLocaleString('en-US', {month: 'long'});
@@ -82,6 +107,7 @@ const AdminHome = () => {
 
   // Attach back handler only for the home screen
   useBackHandler(backActionHandler);
+
   return (
     <View style={styles.Wrapper}>
       <View style={styles.Container}>
@@ -142,7 +168,24 @@ const AdminHome = () => {
             <Text style={[styles.day, {fontSize: 12, color: '#E83C3C'}]}>
               Today's Submission
             </Text>
-            <Text style={[styles.day, {fontSize: 16}]}>App Design for DN</Text>
+
+            <FlatList
+              ref={flatListRef}
+              data={Data2.filter(item => item.date === formattedDate)}
+              keyExtractor={item => item.id.toString()}
+              renderItem={({item}) => (
+                <Text style={[styles.day, {fontSize: 16, marginRight: 10}]}>
+                  {item.title}
+                </Text>
+              )}
+              refreshing={true}
+              style={{
+                alignItem: 'center',
+                width: 'auto',
+                height: 2,
+                margin: 5,
+              }}
+            />
           </View>
         </View>
       </View>

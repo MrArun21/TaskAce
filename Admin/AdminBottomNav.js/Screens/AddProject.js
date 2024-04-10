@@ -4,7 +4,8 @@ import NavBar from './NavBar';
 const AddProject = () => {
   return (
     <View style={styles.Wrapper}>
-      <NavBar title={'Add Project'} color={'#645EBC'} />
+      <NavBar title={'Create Project'} color={'#645EBC'} />
+      <View style={styles.Container}></View>
     </View>
   );
 };
