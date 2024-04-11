@@ -45,14 +45,14 @@ const Data2 = [
     id: 7,
     title: 'Project G',
     time: '05:00 PM',
-    date: '2024-05-10',
+    date: '2024-04-14',
     peoples: 3,
   },
   {
     id: 8,
     title: 'Project H',
     time: '12:15 PM',
-    date: '2024-08-02',
+    date: '2024-04-12',
     peoples: 5,
   },
   {

@@ -5,7 +5,6 @@ const AddProject = () => {
   return (
     <View style={styles.Wrapper}>
       <NavBar title={'Create Project'} color={'#645EBC'} />
-      <View style={styles.Container}></View>
     </View>
   );
 };

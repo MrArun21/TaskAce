@@ -42,7 +42,13 @@ const AdminDrawerContent = ({navigation}) => {
       <View style={styles.lowerBox}>
         <View style={styles.MenuList}>
           <Text style={styles.Menutxt}>Profile</Text>
-          <Text style={styles.Menutxt}>Add Users</Text>
+          <Text
+            style={styles.Menutxt}
+            onPress={() => {
+              navigation.navigate('AddUser');
+            }}>
+            Add Users
+          </Text>
           <Text style={styles.Menutxt}>Employee</Text>
           <Text style={styles.Menutxt}>Work History</Text>
           <Text style={styles.Menutxt}>Settings</Text>

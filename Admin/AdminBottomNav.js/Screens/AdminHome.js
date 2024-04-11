@@ -173,14 +173,24 @@ const AdminHome = () => {
               ref={flatListRef}
               data={Data2.filter(item => item.date === formattedDate)}
               keyExtractor={item => item.id.toString()}
-              renderItem={({item}) => (
-                <Text style={[styles.day, {fontSize: 16, marginRight: 10}]}>
-                  {item.title}
-                </Text>
-              )}
+              renderItem={({item}) => {
+                if (item.title) {
+                  return (
+                    <Text style={[styles.day, {fontSize: 16, marginRight: 10}]}>
+                      {item.title}
+                    </Text>
+                  );
+                } else {
+                  return (
+                    <Text style={[styles.day, {fontSize: 16, marginRight: 10}]}>
+                      No Submission
+                    </Text>
+                  );
+                }
+              }}
               refreshing={true}
               style={{
-                alignItem: 'center',
+                alignSelf: 'center',
                 width: 'auto',
                 height: 2,
                 margin: 5,
