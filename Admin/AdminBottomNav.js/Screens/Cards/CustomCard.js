@@ -9,7 +9,7 @@ const CustomCard = ({item}) => {
         {flexDirection: 'row', gap: 10, alignItems: 'center'},
       ]}
       activeOpacity={0.8}>
-      <View style={styles.cardBody}>
+      <View>
         <View>
           <View style={styles.cardTop}>
             <View style={styles.cardTopBubble}>
@@ -49,7 +49,8 @@ const CustomCard = ({item}) => {
         </View>
       </View>
       <View style={styles.approveBtn}>
-        <Text style={{fontFamily: 'Poppins-Medium', color: '#fff'}}>
+        <Text
+          style={{fontFamily: 'Poppins-Medium', color: '#fff', fontSize: 10}}>
           Approve
         </Text>
       </View>
@@ -61,7 +62,8 @@ export default CustomCard;
 
 const styles = StyleSheet.create({
   cardBody: {
-    margin: 5,
+    marginRight: 5,
+    padding: 8,
     backgroundColor: '#c5c1ff',
     alignSelf: 'center',
     borderRadius: 10,
@@ -123,26 +125,26 @@ const styles = StyleSheet.create({
     color: '#000000',
     fontFamily: 'Poppins-Medium',
     textTransform: 'capitalize',
-    fontSize: 16,
+    fontSize: 14,
+    marginTop: 5,
   },
   assignedToContainer: {
     flexDirection: 'row',
-    gap: 10,
+    gap: 6,
     alignItems: 'center',
   },
   assignedto: {
     color: '#424242',
     fontFamily: 'Poppins-Medium',
     textTransform: 'capitalize',
-    fontSize: 9,
+    fontSize: 8,
   },
   approveBtn: {
     backgroundColor: '#645dbd',
     height: 30,
-    width: 80,
+    width: 70,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 20,
-    marginRight: 10,
   },
 });

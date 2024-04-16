@@ -5,6 +5,7 @@ const SpleshScreen = ({navigation}) => {
   useEffect(() => {
     setTimeout(() => {
       navigation.navigate('Getstarted');
+      // navigation.navigate('AdminDashboard');
     }, 2000);
   });
   const xml = `<svg width="278" height="577" viewBox="0 0 278 577" fill="none" xmlns="http://www.w3.org/2000/svg">

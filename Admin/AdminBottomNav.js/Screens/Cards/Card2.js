@@ -4,30 +4,37 @@ import Icon from 'react-native-vector-icons/Octicons';
 const Card2 = ({item}) => {
   return (
     <TouchableOpacity style={styles.wrapper} activeOpacity={0.9}>
-      <View>
-        <Text style={styles.Name}>{item.title}</Text>
+      <View style={styles.wrapper}>
         <View
           style={{
-            flexDirection: 'row',
-            gap: 20,
-            alignItems: 'center',
+            gap: 10,
+            alignItems: 'flex-start',
           }}>
-          <View style={styles.box}>
-            <Icon name="person" size={15} color={'#000'} />
-            <Text style={styles.text}>{item.peoples} Peoples</Text>
-          </View>
-          <View style={styles.box}>
-            <Icon name="calendar" size={15} color={'#000'} />
-            <Text style={styles.text}>{item.date}</Text>
-          </View>
-          <View style={styles.box}>
-            <Icon name="clock" size={15} color={'#000'} />
-            <Text style={styles.text}>{item.time}</Text>
+          <Text style={styles.Name}>{item.title}</Text>
+          <View
+            style={{
+              gap: 10,
+              flexDirection: 'row',
+              alignItems: 'center',
+              flexWrap: 'wrap',
+            }}>
+            <View style={styles.box}>
+              <Icon name="person" size={15} color={'#000'} />
+              <Text style={styles.text}>{item.peoples} Peoples</Text>
+            </View>
+            <View style={styles.box}>
+              <Icon name="calendar" size={15} color={'#000'} />
+              <Text style={styles.text}>{item.date}</Text>
+            </View>
+            <View style={styles.box}>
+              <Icon name="clock" size={15} color={'#000'} />
+              <Text style={styles.text}>{item.time}</Text>
+            </View>
           </View>
         </View>
-      </View>
-      <View style={styles.Btn}>
-        <Text style={[styles.text, {color: '#fff'}]}>Join</Text>
+        <View style={styles.Btn}>
+          <Text style={[styles.text, {color: '#fff'}]}>Join</Text>
+        </View>
       </View>
     </TouchableOpacity>
   );
@@ -43,11 +50,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     gap: 10,
     width: '100%',
-
-    padding: 15,
-    alignItems: 'center',
+    padding: 5,
+    alignItems: 'flex-start',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    position: 'relative',
   },
   text: {
     fontFamily: 'Poppins-Medium',
@@ -67,8 +74,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#645dbd',
     height: 30,
     width: 60,
+    position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 20,
+    top: '40%',
+    right: 25,
   },
 });

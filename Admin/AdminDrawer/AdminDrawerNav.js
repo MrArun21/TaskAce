@@ -7,6 +7,7 @@ import AdminDrawerContent from './AdminDrawerContent';
 import Plans from '../AdminBottomNav.js/Screens/Plans';
 import Search from '../AdminBottomNav.js/Screens/Search';
 import AddUser from '../AdminBottomNav.js/Screens/AddUser';
+import Employees from '../AdminBottomNav.js/Screens/Employees';
 
 const Drawer = createDrawerNavigator();
 const AdminDrawerNav = () => {
@@ -31,6 +32,11 @@ const AdminDrawerNav = () => {
       <Drawer.Screen
         name="AddUser"
         component={AddUser}
+        options={{headerShown: false}}
+      />
+      <Drawer.Screen
+        name="Employee"
+        component={Employees}
         options={{headerShown: false}}
       />
     </Drawer.Navigator>

@@ -49,7 +49,13 @@ const AdminDrawerContent = ({navigation}) => {
             }}>
             Add Users
           </Text>
-          <Text style={styles.Menutxt}>Employee</Text>
+          <Text
+            style={styles.Menutxt}
+            onPress={() => {
+              navigation.navigate('Employee');
+            }}>
+            Employee
+          </Text>
           <Text style={styles.Menutxt}>Work History</Text>
           <Text style={styles.Menutxt}>Settings</Text>
           <Text style={styles.Menutxt} onPress={logOut}>

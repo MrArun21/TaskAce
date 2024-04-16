@@ -6,7 +6,11 @@ import {
   StyleSheet,
   TouchableOpacity,
   FlatList,
+  Dimensions,
+  BackHandler,
 } from 'react-native';
+const windowHeight = Dimensions.get('window').height;
+const windowWidth = Dimensions.get('window').width;
 import Icon1 from 'react-native-vector-icons/FontAwesome6';
 import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
 import * as Progress from 'react-native-progress';
@@ -18,6 +22,17 @@ const TaskCardCustom = ({visible, closeModal, item, updateItem}) => {
   const [tasks, setTasks] = useState(item.task);
   const [selectedTasks, setSelectedTasks] = useState([]);
 
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      () => {
+        closeModal();
+        return true; // Return true to prevent default behavior (exit app)
+      },
+    );
+
+    return () => backHandler.remove(); // Remove the event listener when component unmounts
+  }, []);
   useEffect(() => {
     setTasks(item.task);
   }, [item.task]);
@@ -139,7 +154,7 @@ const TaskCardCustom = ({visible, closeModal, item, updateItem}) => {
           <View style={styles.progressBar}>
             <Progress.Bar
               progress={item.progress / 10}
-              width={280}
+              width={windowWidth - 100}
               color={item.status === 'Over Due' ? '#fe0000' : '#645EBC'}
               backgroundColor={'#D9D9D9'}
               borderWidth={0}
@@ -188,15 +203,6 @@ const TaskCardCustom = ({visible, closeModal, item, updateItem}) => {
               <Text style={styles.submit}>Submit</Text>
             </TouchableOpacity>
           </View>
-          <TouchableOpacity activeOpacity={0.9} onPress={closeModal}>
-            <Text
-              style={[
-                styles.submit,
-                {color: '#645dbd', alignSelf: 'center', paddingTop: 8},
-              ]}>
-              Show Less
-            </Text>
-          </TouchableOpacity>
         </View>
       </View>
     </Modal>
@@ -369,7 +375,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   todoList: {
-    height: '40%',
+    height: windowHeight - 650,
     paddingTop: 10,
     paddingBottom: 10,
   },

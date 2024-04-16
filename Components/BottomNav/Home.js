@@ -8,7 +8,9 @@ import {
   Alert,
   ToastAndroid,
   BackHandler,
+  Dimensions,
 } from 'react-native';
+const windowWidth = Dimensions.get('window').width;
 import React, {useState} from 'react';
 import TaskCardCustom from '../../Components/TaskCardCustom';
 import Icon2 from 'react-native-vector-icons/FontAwesome';
@@ -115,7 +117,7 @@ const Home = ({navigation}) => {
         <View style={styles.progressBar}>
           <Progress.Bar
             progress={item.progress / 10}
-            width={280}
+            width={windowWidth - 100}
             color={item.status === 'Over Due' ? '#fe0000' : '#645EBC'}
             backgroundColor={'#D9D9D9'}
             borderWidth={0}
@@ -291,11 +293,11 @@ const styles = StyleSheet.create({
   },
   DeshBack: {
     width: '100%',
-    height: '80%',
+    height: '79%',
     backgroundColor: '#645EBC',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    padding: 25,
+    padding: 15,
   },
   Deshnav: {
     width: '100%',

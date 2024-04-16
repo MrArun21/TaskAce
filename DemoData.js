@@ -18,6 +18,13 @@ const Data = [
       },
       {id: 2, task: 'Task 2', checked: false},
       {id: 3, task: 'Task 3', checked: false},
+
+      {id: 4, task: 'Task 3', checked: false},
+      {id: 5, task: 'Task 3', checked: false},
+      {id: 6, task: 'Task 3', checked: false},
+      {id: 7, task: 'Task 3', checked: false},
+      {id: 8, task: 'Task 3', checked: false},
+      {id: 9, task: 'Task 3', checked: false},
     ],
   },
   {

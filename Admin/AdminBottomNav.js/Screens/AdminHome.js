@@ -5,10 +5,10 @@ import {
   Alert,
   ToastAndroid,
   BackHandler,
-  ScrollView,
   FlatList,
-  TouchableOpacity,
+  Dimensions,
 } from 'react-native';
+const windowWidth = Dimensions.get('window').width;
 import React, {useState, useEffect, useRef} from 'react';
 import {useBackHandler} from '@react-native-community/hooks';
 import {useNavigation, DrawerActions} from '@react-navigation/native';
@@ -212,7 +212,7 @@ const AdminHome = () => {
           />
         </View>
         <Text style={styles.title1}>meeting’s </Text>
-        <View style={[styles.Card, {paddingBottom: 120}]}>
+        <View style={[styles.Card1, {paddingBottom: '10%'}]}>
           <FlatList
             data={Data2}
             keyExtractor={item => item.id.toString()}
@@ -290,18 +290,18 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   projectDetails: {
-    gap: 5,
+    gap: 12,
     flexDirection: 'row',
     alignItems: 'center',
     width: '100%',
-    marginTop: 10,
+    marginTop: 2,
   },
   projectDetailsLeft: {
     alignItems: 'center',
     justifyContent: 'space-around',
 
     width: '48%',
-    gap: 10,
+    gap: 5,
   },
   Project: {
     flexDirection: 'row',
@@ -348,15 +348,15 @@ const styles = StyleSheet.create({
   CardContainer: {
     position: 'absolute',
     alignItems: 'center',
-    height: '48%',
+    height: '45%',
     backgroundColor: '#fff',
-    width: '90%',
+    width: windowWidth - 20,
     alignSelf: 'center',
     bottom: 0,
     borderTopLeftRadius: 20,
 
     borderTopRightRadius: 20,
-    padding: 10,
+    padding: 8,
   },
   title1: {
     color: '#424242',
@@ -367,6 +367,12 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
   },
   Card: {
+    width: windowWidth - 50,
+    marginTop: 6,
+    marginBottom: 6,
+  },
+  Card1: {
     width: '100%',
+    height: '70%',
   },
 });

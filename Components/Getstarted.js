@@ -86,13 +86,13 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '51%',
     alignItems: 'center',
-    gap: 80,
+    gap: 50,
     paddingTop: 20,
     borderTopLeftRadius: 60,
     borderTopRightRadius: 60,
   },
   txtBox: {
-    marginTop: 40,
+    marginTop: 30,
     gap: 15,
   },
   text: {
