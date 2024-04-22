@@ -121,12 +121,12 @@ const TaskCardCustom = ({visible, closeModal, item, updateItem}) => {
             </View>
           </View>
           <View style={styles.TitleContainer}>
-            <Text style={styles.Taskname}>{item.name}</Text>
+            <Text style={styles.TaskName}>{item.name}</Text>
             <View style={styles.assignedToContainer}>
-              <Text style={styles.assignedto}>
+              <Text style={styles.assigned}>
                 Assigned By - {item.assignedTo}
               </Text>
-              <Text style={styles.assignedto}>
+              <Text style={styles.assigned}>
                 submit Date - {item.submitDate}
               </Text>
             </View>
@@ -283,7 +283,7 @@ const styles = StyleSheet.create({
   TitleContainer: {
     position: 'relative',
   },
-  Taskname: {
+  TaskName: {
     color: '#000000',
     fontFamily: 'Poppins-Medium',
     textTransform: 'capitalize',
@@ -294,7 +294,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     marginTop: 10,
   },
-  assignedto: {
+  assigned: {
     color: '#424242',
     fontFamily: 'Poppins-Medium',
     textTransform: 'capitalize',
